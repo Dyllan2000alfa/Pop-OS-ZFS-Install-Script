@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eux
+set -eu
 
 #
 # Configuration
@@ -10,7 +10,7 @@ echo "Disk to install ZFS on"
 echo "Disk entered will be erased without a further prompt" 
 echo "Should be drive ID" 
 echo "EX: if /dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-1 type scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-1"
-read -p "disk" CFG_DISK_ID
+read -p "disk: " CFG_DISK_ID
 read -p "System Hostname: " CFG_HOSTNAME
 read -p "Timezone: " CFG_TIMEZONE
 read -p "Username: " CFG_USERNAME
@@ -19,6 +19,7 @@ read -sp "User Password: " CFG_PASSWORD
 
 # Identifier to use when creating zfs data sets (default: random).
 CFG_ZFSID=$(dd if=/dev/urandom of=/dev/stdout bs=1 count=100 2>/dev/null | tr -dc 'a-z0-9' | cut -c-6)
+CFG_DISK=/dev/disk/by-id/$CFG_DISK_ID
 
 # Vars
 # ----
