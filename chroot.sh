@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eux
+set -eu
 
 # Locale/TZ
 
@@ -50,9 +50,9 @@ mkdir /etc/zfs/zfs-list.cache
 touch /etc/zfs/zfs-list.cache/bpool
 touch /etc/zfs/zfs-list.cache/rpool
 zed -F &
-zed_pid=\$!
+zed_pid=$!
 sleep 5
-kill \$zed_pid
+kill $zed_pid
 sed -Ei "s|/mnt/?|/|" /etc/zfs/zfs-list.cache/*
 
 # Add user
