@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -eu
+set -eux
 
 # Locale/TZ
 
@@ -56,10 +56,10 @@ kill $zed_pid
 sed -Ei "s|/mnt/?|/|" /etc/zfs/zfs-list.cache/*
 
 # Add user
-adduser --disabled-password --gecos "$CFG_FULLNAME" "$CFG_USERNAME"
+adduser --disabled-password --gecos "$CFG_FULLNAME" $CFG_USERNAME
 cp -a /etc/skel/. /home/$CFG_USERNAME
 chown -R $CFG_USERNAME:$CFG_USERNAME /home/$CFG_USERNAME
-usermod -a -G adm,cdrom,dip,lpadmin,lxd,plugdev,sambashare,sudo $CFG_USERNAME
+usermod -a -G adm,cdrom,dip,lpadmin,plugdev,sudo $CFG_USERNAME
 echo -e "$CFG_USERNAME\n$CFG_USERNAME" | passwd $CFG_PASSWORD
 
 # Remove installer packages
