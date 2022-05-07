@@ -6,7 +6,10 @@ set -eux
 # Configuration
 # -------------
 
-echo "Disk to install ZFS on. Disk entered will be erased without a further prompt. Should be drive ID. EX: if /dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-1 type scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-1"
+echo "Disk to install ZFS on" 
+echo "Disk entered will be erased without a further prompt" 
+echo "Should be drive ID" 
+echo "EX: if /dev/disk/by-id/scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-1 type scsi-0QEMU_QEMU_HARDDISK_drive-scsi0-0-1"
 read -p "disk" CFG_DISK_ID
 read -p "System Hostname: " CFG_HOSTNAME
 read -p "Timezone: " CFG_TIMEZONE
