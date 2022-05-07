@@ -60,7 +60,7 @@ adduser --disabled-password --gecos "$CFG_FULLNAME" $CFG_USERNAME
 cp -a /etc/skel/. /home/$CFG_USERNAME
 chown -R $CFG_USERNAME:$CFG_USERNAME /home/$CFG_USERNAME
 usermod -a -G adm,cdrom,dip,lpadmin,plugdev,sudo $CFG_USERNAME
-echo -e "$CFG_USERNAME\n$CFG_USERNAME" | passwd $CFG_PASSWORD
+echo -e "$CFG_USERNAME $CFG_USERNAME" | passwd $CFG_PASSWORD
 
 # Remove installer packages
 < /root/filesystem.manifest-remove xargs dpkg --purge -y
