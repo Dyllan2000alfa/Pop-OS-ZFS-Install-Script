@@ -63,7 +63,7 @@ usermod -a -G adm,cdrom,dip,lpadmin,plugdev,sudo $CFG_USERNAME
 echo -e "$CFG_PASSWORD\n$CFG_PASSWORD" | passwd $CFG_USERNAME
 
 # Remove installer packages
-< /root/filesystem.manifest-remove xargs dpkg --purge -y
+< /root/filesystem.manifest-remove xargs dpkg --purge
 
 # Disable logrotote compression since zfs does that already
 for file in /etc/logrotate.d/* ; do
