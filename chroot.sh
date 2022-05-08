@@ -24,7 +24,7 @@ mkdir /boot/efi/grub /boot/grub
 echo /boot/efi/grub /boot/grub none defaults,bind 0 0 >> /etc/fstab
 mount /boot/grub
 if [ "$has_uefi" == true ]; then
-  apt install --yes grub-efi-amd64 grub-efi-amd64-signed shim-signed zfs-initramfs zsys
+  apt install --yes grub-efi-amd64 grub-efi-amd64-signed shim-signed zfs-initramfs zsys zfs-dkms
 else
   # Note: grub-pc will ask where to write
   apt install --yes grub-pc zfs-initramfs zsys zfs-dkms
